@@ -1,4 +1,4 @@
-import { gridDefault } from './assets/defaultGrid.js'
+import { gridDefault, gridTest } from './assets/defaultGrid.js'
 import { move } from './controls/index.js'
 import { newCarrot } from './functions/newCarrot.js'
 import { sleep } from './functions/sleep.js'
@@ -8,6 +8,14 @@ import {
   shortestWayColumn,
   shortestWayRow
 } from './utils/index.js'
+
+// const timeout = 200
+// let game = {
+//   state: 'goingRight',
+//   grid: newCarrot(gridDefault),
+//   score: 0,
+//   tail: 0
+// }
 
 const timeout = 200
 let game = {

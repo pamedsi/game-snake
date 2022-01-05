@@ -10,7 +10,21 @@ export function goDown(game) {
   const bunnyColumn = bunnyCoordinates[1]
   console.clear()
 
-  if (isBunnyUnder(grid)) {
+  if (isBunnyUnder(grid) && imminentCarrotDown(grid)) {
+    grid = newCarrot(grid)
+    score++
+    grid = grid.split('')
+    grid[coordinates[bunnyLine][bunnyColumn]] = '⬛'
+    grid[coordinates[bunnyLine - 7][bunnyColumn]] = 'B'
+    grid = grid.join('')
+  } else if (imminentCarrotDown(grid)) {
+    grid = newCarrot(grid)
+    score++
+    grid = grid.split('')
+    grid[coordinates[bunnyLine][bunnyColumn]] = '⬛'
+    grid[coordinates[bunnyLine + 1][bunnyColumn]] = 'B'
+    grid = grid.join('')
+  } else if (isBunnyUnder(grid)) {
     grid = grid.split('')
     grid[coordinates[bunnyLine][bunnyColumn]] = '⬛'
     grid[coordinates[bunnyLine - 7][bunnyColumn]] = 'B'
@@ -23,5 +37,6 @@ export function goDown(game) {
   }
 
   console.log(grid.replace('B', '🐰').replace('C', '🥕'))
+  console.log(`🥕 x ${score}`)
   return { grid, score, state: game.state }
 }
